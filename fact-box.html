@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fact Box</title>
+  <style>
+    #factBox {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 220px;
+      padding: 15px;
+      background-color: #fefefe;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    #factText {
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="factBox">
+    <div id="factText">Click me for a fact! Hover to make me move!</div>
+  </div>
+
+  <script>
+    const factBox = document.getElementById('factBox');
+    const factText = document.getElementById('factText');
+
+    const facts = [
+      "Sakshi has over 100 million lens views on Snapchat!",
+      "She built more than 200 AR lenses!",
+      "She's in the NCC Air Wing aiming for the IAF.",
+      "Sakshi created content for Under25 and Microsoft clubs.",
+      "She loves graphic design and public speaking!",
+      "Sakshi built a robot that detects and avoids obstacles."
+    ];
+
+    // Change fact on click
+    factBox.addEventListener('click', () => {
+      const randomIndex = Math.floor(Math.random() * facts.length);
+      factText.textContent = facts[randomIndex];
+    });
+
+    // Move box on hover
+    factBox.addEventListener('mouseenter', () => {
+      const maxX = window.innerWidth - factBox.offsetWidth - 20;
+      const maxY = window.innerHeight - factBox.offsetHeight - 20;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      factBox.style.left = randomX + 'px';
+      factBox.style.top = randomY + 'px';
+      factBox.style.bottom = 'auto';
+      factBox.style.right = 'auto';
+    });
+  </script>
+
+</body>
+</html>
